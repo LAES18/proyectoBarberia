@@ -13,7 +13,7 @@ cloudflared tunnel create barberia
 ```
 
 3. Instala el JSON de credenciales en `/etc/cloudflared/` con permisos restringidos. No lo copies al repositorio.
-4. Copia `deploy/cloudflared/config.yml.example` a `/etc/cloudflared/config.yml`. Sustituye el UUID, el path de credenciales y el hostname real. Conserva la ruta final `http_status:404`.
+4. Copia `deploy/cloudflared/config.yml.example` a `/etc/cloudflared/config-barberia.yml`. Sustituye el UUID, el path de credenciales y el hostname real. Conserva la ruta final `http_status:404`. Usa este nombre específico; no sobrescribas `/etc/cloudflared/config.yml` si pertenece a otro túnel.
 5. Crea el DNS del túnel para el hostname elegido:
 
 ```bash
@@ -23,10 +23,10 @@ cloudflared tunnel route dns barberia barberia.example.com
 6. Valida la configuración:
 
 ```bash
-sudo cloudflared --config /etc/cloudflared/config.yml tunnel ingress validate
+sudo cloudflared --config /etc/cloudflared/config-barberia.yml tunnel ingress validate
 ```
 
-7. Instala `deploy/systemd/cloudflared-barberia.service.example` en `/etc/systemd/system/cloudflared-barberia.service`, ajusta el path de configuración si hace falta y actívalo:
+7. Instala `deploy/systemd/cloudflared-barberia.service.example` en `/etc/systemd/system/cloudflared-barberia.service`. La unidad usa `/etc/cloudflared/config-barberia.yml`; después actívala:
 
 ```bash
 sudo systemctl daemon-reload
@@ -45,7 +45,7 @@ También se puede usar un token de túnel dedicado. Guarda el token solamente en
 ```bash
 sudo systemctl status cloudflared-barberia --no-pager
 sudo journalctl -u cloudflared-barberia -n 100 --no-pager
-sudo cloudflared --config /etc/cloudflared/config.yml tunnel ingress validate
+sudo cloudflared --config /etc/cloudflared/config-barberia.yml tunnel ingress validate
 curl -I -H 'Host: barberia.example.com' http://127.0.0.1:3003/
 ```
 

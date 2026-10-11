@@ -9,6 +9,16 @@ Guía para desplegar el frontend, API, SQLite y servicios en Linux con systemd, 
 - Git, SQLite 3, Nginx y `cloudflared`.
 - Un hostname DNS gestionado por Cloudflare y un túnel configurado.
 
+## Aislamiento en un servidor compartido
+
+SQLite es un archivo, no un servicio de red: usa la ruta exclusiva `/var/lib/barberia/database.sqlite` y no reutilices la base de otro proyecto. Los ejemplos reservan los puertos `5002` (API) y `3003` (Nginx); antes de instalar, comprueba que estén libres:
+
+```bash
+sudo ss -ltnp | grep -E ':(3003|5002)\b' || true
+```
+
+Si alguno ya está ocupado, **no mates el proceso**. Elige puertos libres y cambia el valor en `backend.env`, `deploy/nginx/barberia.conf.example`, `frontend/vite.config.js` (solo proxy de desarrollo) y `deploy/cloudflared/config.yml.example` según corresponda. Conserva nombres exclusivos como `barberia-backend.service`, `cloudflared-barberia.service`, `/etc/barberia/` y `/var/lib/barberia/`; no reemplaces una unidad `cloudflared` global que sirva otros proyectos.
+
 ## Clonar e instalar
 
 ```bash
