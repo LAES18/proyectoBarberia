@@ -4,13 +4,22 @@ La aplicación utiliza SQLite con Sequelize. El backend crea tablas que falten a
 
 ## Esquema versionado
 
-`db/schema.sql` contiene las definiciones de `users`, `haircuts` y el índice por barbero/fecha. No incluye usuarios, hashes de contraseñas, cortes ni otra información de la instancia productiva. Para crear una base vacía manualmente:
+`db/schema.sql` contiene las definiciones de `users`, `haircuts` y el índice por barbero/fecha. El snapshot `db/seed-users.sql` contiene las cinco cuentas existentes al momento de generarlo, incluyendo datos personales y hashes bcrypt para conservar sus inicios de sesión. No contiene cortes ni ingresos. **Mantén el repositorio privado**; si el archivo se expone, rota las contraseñas de esas cuentas.
 
 ```bash
 sqlite3 /var/lib/barberia/database.sqlite < db/schema.sql
 ```
 
-En la instalación normal no hace falta ejecutar el SQL: Sequelize crea las tablas cuando el servicio arranca. El SQL es una referencia reproducible y útil para revisar el esquema.
+Para clonar las cuentas, importa el snapshot después del esquema y antes del primer arranque del backend:
+
+```bash
+sqlite3 /var/lib/barberia/database.sqlite < db/schema.sql
+sqlite3 /var/lib/barberia/database.sqlite < db/seed-users.sql
+```
+
+No arranques el backend entre ambos comandos: al no encontrar un administrador, intentará crear uno usando `ADMIN_*`. En una instalación completamente nueva sin snapshot, basta con iniciar el backend y se creará el administrador definido en el entorno. Regenera el snapshot al cambiar cuentas y sube el cambio únicamente al repositorio privado.
+
+En la instalación normal Sequelize crea las tablas si faltan. El SQL es reproducible y permite clonar las cuentas existentes cuando se necesite.
 
 ## Copia de seguridad de la base real
 

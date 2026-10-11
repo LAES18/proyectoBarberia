@@ -1,6 +1,6 @@
 # Sistema de Gestión de Barbería
 
-> Guía de producción y clonación actualizada: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). El archivo SQLite con los datos reales no se publica; el esquema SQL limpio está en [db/schema.sql](db/schema.sql).
+> Guía de producción y clonación: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). El repositorio lleva el esquema en [db/schema.sql](db/schema.sql) y, para esta instalación privada, un snapshot de cuentas en [db/seed-users.sql](db/seed-users.sql). Ese snapshot contiene datos personales y hashes: mantén el repositorio privado.
 
 Sistema completo de gestión para barberías con roles de Barbero, Cobrador y Administrador. Desarrollado con React, Vite, Bootstrap, Node.js, Express y SQLite.
 
@@ -173,7 +173,7 @@ proyecto-barberia/
 
 ## Base de datos
 
-La base SQLite se crea automáticamente al iniciar el backend. El repositorio incluye el esquema sin datos productivos en `db/schema.sql`; las instrucciones de respaldo y migración están en [docs/DATABASE.md](docs/DATABASE.md). Nunca subas la base real.
+La base SQLite se crea automáticamente al iniciar el backend. `db/schema.sql` define las tablas; `db/seed-users.sql` restaura las cinco cuentas capturadas en el snapshot, pero no incluye cortes ni ingresos. El seed contiene nombres, correos y hashes de contraseña: el repositorio debe permanecer privado. Las instrucciones están en [docs/DATABASE.md](docs/DATABASE.md). Nunca subas la base SQLite real.
 
 Las tablas incluyen:
 
@@ -189,8 +189,9 @@ Las tablas incluyen:
 ## Seguridad y control de versiones
 
 - `.env`, base SQLite, respaldos, `node_modules`, `dist` y logs están excluidos por `.gitignore`.
-- Solo sube plantillas `.env.example`; nunca incluyas tokens de Cloudflare, credenciales de túnel, contraseñas, hashes ni filas productivas.
-- El SQL versionado define tablas e índice, no contiene datos de clientes, usuarios ni cortes.
+- No incluyas tokens de Cloudflare, credenciales de túnel ni contraseñas en el repositorio.
+- `db/seed-users.sql` es una excepción deliberada: contiene datos de cuentas y hashes para clonación; limita el acceso al repositorio privado y rota las contraseñas si se expone.
+- El snapshot incluye usuarios, pero no cortes, ingresos ni el archivo SQLite productivo.
 - Las notas históricas de despliegue del servidor se excluyen porque pueden contener información específica o sensible del host.
 
 ## 🔄 Características Especiales

@@ -43,6 +43,17 @@ openssl rand -base64 48
 
 El administrador inicial se crea únicamente cuando la base no contiene uno. El backend falla al arrancar si necesita crearlo y faltan las variables `ADMIN_USERNAME`, `ADMIN_EMAIL`, `ADMIN_FULL_NAME` o `ADMIN_PASSWORD`. Guarda la contraseña en el gestor de contraseñas y cámbiala si se comparte.
 
+### Restaurar las cuentas actuales
+
+El repositorio privado incluye un snapshot de usuarios. Para conservar esas cuentas y sus contraseñas al clonar, importa el esquema y el seed antes de iniciar el backend:
+
+```bash
+sudo -u barberia sqlite3 /var/lib/barberia/database.sqlite < /opt/barberia/db/schema.sql
+sudo -u barberia sqlite3 /var/lib/barberia/database.sqlite < /opt/barberia/db/seed-users.sql
+```
+
+El snapshot contiene nombres, correos y hashes de contraseña. No hagas público el repositorio ni compartas el archivo fuera del equipo autorizado. Incluye usuarios, pero **no** historial de cortes; para copiar también el historial, usa el procedimiento de respaldo privado de [DATABASE.md](DATABASE.md).
+
 ## Instalar los servicios
 
 ```bash
