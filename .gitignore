@@ -1,0 +1,35 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencies and build output
+**/node_modules/
+**/dist/
+coverage/
+
+# Local databases and backups (never commit production data)
+*.sqlite
+*.sqlite3
+*.db
+*.db-wal
+*.db-shm
+*.backup
+*.bak
+
+# Logs, editor and OS files
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Historical deployment notes contain old host-specific configuration
+/DEPLOYMENT_COMPLETO.md
+/INCIDENTE_RESUELTO.md
+/RESUMEN_SIN_CONFLICTOS.md
+/TUNEL_SHYNO_CONFIGURADO.md
+/VERIFICACION_NO_CONFLICTOS.md

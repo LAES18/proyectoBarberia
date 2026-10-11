@@ -1,0 +1,252 @@
+.percentage-modal {
+  max-width: 500px;
+}
+
+.percentage-info {
+  padding: 20px 30px;
+  background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+  color: white;
+  text-align: center;
+}
+
+.barber-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.percentage-info p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+.percentage-input-group {
+  margin-bottom: 25px;
+}
+
+.percentage-input-group label {
+  display: block;
+  margin-bottom: 12px;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.percentage-input-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.percentage-input {
+  width: 100%;
+  padding: 15px 50px 15px 20px;
+  border: 3px solid #9b59b6;
+  border-radius: 12px;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.percentage-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(155, 89, 182, 0.2);
+  transform: scale(1.02);
+}
+
+.percentage-symbol {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28px;
+  font-weight: 700;
+  color: #9b59b6;
+}
+
+.percentage-range {
+  margin-bottom: 20px;
+}
+
+.range-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: linear-gradient(to right, 
+    #e74c3c 0%, 
+    #f39c12 25%, 
+    #2ecc71 50%, 
+    #3498db 75%, 
+    #9b59b6 100%);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  border: 3px solid #9b59b6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.range-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  border: 3px solid #9b59b6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.percentage-examples {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.percentage-preset {
+  background: white;
+  border: 2px solid #9b59b6;
+  color: #9b59b6;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.percentage-preset:hover {
+  background: #9b59b6;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.calculation-preview {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.calculation-preview h4 {
+  color: #2c3e50;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.preview-example {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.preview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  color: #2c3e50;
+}
+
+.preview-row:last-child {
+  border-bottom: none;
+}
+
+.preview-row.highlight {
+  background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 10px 0;
+  border-bottom: none;
+}
+
+.preview-row strong {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .percentage-modal {
+    max-width: 100%;
+  }
+
+  .percentage-info {
+    padding: 15px 20px;
+  }
+
+  .barber-name {
+    font-size: 18px;
+  }
+
+  .percentage-input {
+    font-size: 24px;
+    padding: 13px 45px 13px 15px;
+  }
+
+  .percentage-symbol {
+    font-size: 24px;
+  }
+
+  .calculation-preview {
+    padding: 15px;
+  }
+
+  .preview-row strong {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .percentage-input-group label {
+    font-size: 14px;
+  }
+
+  .percentage-input {
+    font-size: 22px;
+  }
+
+  .percentage-examples {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .percentage-preset {
+    flex: 1;
+    min-width: 65px;
+    padding: 7px 10px;
+    font-size: 13px;
+    min-height: 38px;
+  }
+
+  .calculation-preview h4 {
+    font-size: 14px;
+  }
+
+  .preview-row {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .percentage-input {
+    font-size: 20px;
+    padding: 12px 40px 12px 12px;
+  }
+
+  .percentage-symbol {
+    font-size: 20px;
+    right: 12px;
+  }
+}

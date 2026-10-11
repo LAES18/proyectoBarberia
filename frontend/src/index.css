@@ -1,0 +1,134 @@
+:root {
+  --primary-color: #9b59b6;
+  --primary-dark: #8e44ad;
+  --primary-light: #bb8fce;
+  --secondary-color: #3498db;
+  --success-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --warning-color: #f39c12;
+  --info-color: #1abc9c;
+  --light-bg: #f8f9fa;
+  --dark-text: #2c3e50;
+  --white: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Bootstrap Overrides */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+/* Card Styles */
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+}
+
+/* Form Styles */
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(155, 89, 182, 0.25);
+}
+
+/* Loading Spinner */
+.spinner-border-primary {
+  color: var(--primary-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+/* Responsive Global */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  /* Asegurar que botones y controles sean fácilmente tocables */
+  button, input, select, textarea {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Prevenir zoom en iOS al enfocar inputs */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}

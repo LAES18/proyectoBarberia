@@ -1,0 +1,9 @@
+# Locally-managed Cloudflare Tunnel configuration example.
+# Replace the placeholders; never commit the credentials JSON or cert.pem.
+tunnel: REPLACE_WITH_TUNNEL_UUID
+credentials-file: /etc/cloudflared/REPLACE_WITH_TUNNEL_UUID.json
+
+ingress:
+  - hostname: barberia.example.com
+    service: http://127.0.0.1:3003
+  - service: http_status:404
